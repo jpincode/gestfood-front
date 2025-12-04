@@ -1,0 +1,231 @@
+/* footer.css */
+
+.dashboard-footer {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-light);
+  padding: var(--spacing-md) 0;
+  margin-top: auto;
+  position: relative;
+  z-index: var(--z-sticky);
+  transition: all var(--transition-normal) var(--transition-timing);
+}
+
+.footer-content {
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  align-items: center;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+  }
+}
+
+.dashboard-footer p {
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.footer-version {
+  color: var(--text-muted) !important;
+  font-size: var(--text-xs) !important;
+  margin-top: var(--spacing-xs) !important;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .footer-version {
+    justify-content: flex-start;
+  }
+}
+
+.footer-version::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  background-color: var(--color-primary-400);
+  border-radius: 50%;
+  opacity: 0.7;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .footer-links {
+    justify-content: flex-end;
+  }
+}
+
+.footer-link {
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  text-decoration: none;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast) var(--transition-timing);
+  position: relative;
+}
+
+.footer-link:hover {
+  color: var(--text-accent);
+  background-color: var(--bg-accent);
+  transform: translateY(-1px);
+}
+
+.footer-link:active {
+  transform: translateY(0);
+}
+
+.footer-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-primary-400);
+  border-radius: var(--radius-full);
+  transition: transform var(--transition-fast) var(--transition-timing);
+}
+
+.footer-link:hover::after {
+  transform: translateX(-50%) scaleX(0.8);
+}
+
+/* Estilo para links ativos (se estiver usando NavLink do react-router) */
+.footer-link.active {
+  color: var(--text-accent);
+  font-weight: 500;
+}
+
+.footer-link.active::after {
+  transform: translateX(-50%) scaleX(1);
+  background-color: var(--color-primary-400);
+}
+
+/* Separador para links no mobile */
+@media (max-width: 767px) {
+  .footer-links {
+    position: relative;
+    padding-top: var(--spacing-md);
+  }
+  
+  .footer-links::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 1px;
+    background-color: var(--border-light);
+  }
+}
+
+/* Light Theme Adjustments */
+.light-theme .dashboard-footer {
+  background-color: var(--bg-secondary);
+  border-top-color: var(--border-light);
+}
+
+.light-theme .dashboard-footer p {
+  color: var(--text-secondary);
+}
+
+.light-theme .footer-version {
+  color: var(--text-muted) !important;
+}
+
+.light-theme .footer-version::before {
+  background-color: var(--color-primary-500);
+}
+
+.light-theme .footer-link {
+  color: var(--text-secondary);
+}
+
+.light-theme .footer-link:hover {
+  color: var(--text-accent);
+  background-color: var(--color-primary-50);
+}
+
+.light-theme .footer-link::after {
+  background-color: var(--color-primary-500);
+}
+
+.light-theme .footer-link.active {
+  color: var(--text-accent);
+}
+
+.light-theme .footer-link.active::after {
+  background-color: var(--color-primary-500);
+}
+
+/* Efeito de brilho sutil no hover */
+.footer-link:hover {
+  box-shadow: 0 2px 8px rgba(251, 146, 60, 0.1);
+}
+
+/* Animação para o indicador de versão */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.footer-version::before {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Responsividade adicional */
+@media (max-width: 480px) {
+  .footer-content {
+    padding: 0 var(--spacing-md);
+  }
+  
+  .footer-links {
+    gap: var(--spacing-sm);
+  }
+  
+  .footer-link {
+    font-size: var(--text-xs);
+    padding: var(--spacing-xs);
+  }
+}
+
+/* Ajuste para quando o footer estiver em telas muito pequenas */
+@media (max-width: 320px) {
+  .footer-links {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+  
+  .footer-link::after {
+    display: none;
+  }
+}

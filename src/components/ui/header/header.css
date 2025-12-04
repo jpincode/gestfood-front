@@ -1,0 +1,493 @@
+/* header.css - VERSÃO CORRIGIDA E ORGANIZADA */
+
+/* 1. Header Principal */
+header {
+  background-color: var(--bg-secondary);
+  box-shadow: var(--shadow-sm);
+  border-bottom: 1px solid var(--border-light);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  backdrop-filter: blur(10px);
+  background-color: rgba(38, 38, 38, 0.95);
+  padding: 0 var(--spacing-lg);
+}
+
+/* 2. Container Principal */
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+  width: 100%;
+}
+
+/* 3. Logo */
+.logo {
+  flex-shrink: 0;
+}
+
+.logo a {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--color-primary-400), var(--color-primary-300));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-decoration: none;
+  transition: all var(--transition-normal) var(--transition-timing);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.logo a:hover {
+  transform: scale(1.02);
+  text-shadow: 0 2px 4px rgba(249, 115, 22, 0.2);
+}
+
+.logo strong {
+  color: var(--color-primary-400);
+  font-weight: 800;
+}
+
+/* 4. Navegação */
+.nav-bar {
+  flex: 1;
+  margin: 0 var(--spacing-xl);
+}
+
+.nav-bar nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.nav-bar ul {
+  display: flex;
+  list-style: none;
+  gap: var(--spacing-lg);
+  margin: 0;
+  padding: 0;
+}
+
+.nav-bar ul li a {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast) var(--transition-timing);
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.nav-bar ul li a:hover {
+  color: var(--color-primary-300);
+  background-color: var(--color-neutral-100);
+}
+
+.nav-bar ul li a.active {
+  color: var(--color-primary-300);
+  font-weight: 600;
+}
+
+/* Indicador de carrinho */
+.cart-count {
+  background: var(--color-primary-600);
+  color: var(--btn-primary-text);
+  font-size: var(--text-xs);
+  min-width: 18px;
+  height: 18px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  padding: 0 4px;
+}
+
+/* 5. Área do Perfil */
+.profile {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+/* 5.1 Usuário Não Logado */
+.login-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.login-btn button {
+  padding: var(--spacing-xs) var(--spacing-lg);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast) var(--transition-timing);
+  min-width: 80px;
+}
+
+.btn-login {
+  color: var(--color-primary-300);
+  border: 1px solid var(--border-light);
+  background-color: var(--color-neutral-100);
+}
+
+.btn-login:hover {
+  background-color: var(--color-neutral-200);
+  border-color: var(--color-primary-400);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-register {
+  background: linear-gradient(90deg, var(--color-primary-500), var(--color-primary-600));
+  color: var(--btn-primary-text);
+}
+
+.btn-register:hover {
+  background: linear-gradient(90deg, var(--color-primary-600), var(--color-primary-700));
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.login-btn p {
+  margin: 0;
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Profile Logo (usuário não logado) */
+.profile-logo.guest {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  cursor: pointer;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-md);
+  transition: background-color var(--transition-normal) var(--transition-timing);
+}
+
+.profile-logo.guest:hover {
+  background-color: var(--color-neutral-100);
+}
+
+.profile-logo .image {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-neutral-200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--border-light);
+}
+
+.profile-logo .name {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* 5.2 Usuário Logado */
+.logged-in-user {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.desk-info {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  background-color: var(--color-primary-50);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  color: var(--text-accent);
+  margin-bottom: 4px;
+}
+
+.desk-code {
+  font-weight: 500;
+}
+
+.user-greeting {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.user-greeting strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.profile-logo.logged {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  cursor: pointer;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-md);
+  transition: background-color var(--transition-normal) var(--transition-timing);
+}
+
+.profile-logo.logged:hover {
+  background-color: var(--color-neutral-100);
+}
+
+.profile-logo .image .avatar-initials {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--color-primary-400), var(--color-primary-600));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: var(--text-sm);
+  border: 2px solid var(--color-primary-300);
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-logo.logged .name {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.desk-info-mobile {
+  display: none;
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+}
+
+/* Botão de Logout */
+.btn-logout {
+  background-color: transparent;
+  border: 1px solid var(--border-medium);
+  color: var(--text-secondary);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition: all var(--transition-normal) var(--transition-timing);
+  white-space: nowrap;
+}
+
+.btn-logout:hover {
+  background-color: rgba(239, 68, 68, 0.1);
+  border-color: var(--error-color);
+  color: var(--error-color);
+}
+
+/* 6. Botão de Tema */
+.change-theme-container {
+  margin-left: var(--spacing-sm);
+}
+
+/* 7. Responsividade */
+@media (max-width: 1024px) {
+  .nav-bar {
+    margin: 0 var(--spacing-lg);
+  }
+  
+  .nav-bar ul {
+    gap: var(--spacing-md);
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 0 var(--spacing-md);
+  }
+  
+  .header-container {
+    padding: 0;
+    height: auto;
+    min-height: var(--header-height);
+  }
+  
+  .nav-bar {
+    margin: 0 var(--spacing-md);
+  }
+  
+  .nav-bar ul li a {
+    font-size: var(--text-sm);
+    padding: var(--spacing-xs);
+  }
+  
+  .logo a {
+    font-size: var(--text-xl);
+  }
+  
+  .logged-in-user {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    width: 100%;
+  }
+  
+  .user-info {
+    display: none;
+  }
+  
+  .user-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .desk-info-mobile {
+    display: block;
+  }
+  
+  .login-btn button {
+    padding: var(--spacing-xs) var(--spacing-md);
+    min-width: 70px;
+  }
+}
+
+@media (max-width: 640px) {
+  header {
+    padding: var(--spacing-sm);
+  }
+  
+  .header-container {
+    flex-direction: column;
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm) 0;
+  }
+  
+  .nav-bar {
+    width: 100%;
+    margin: 0;
+  }
+  
+  .nav-bar ul {
+    justify-content: center;
+    gap: var(--spacing-sm);
+  }
+  
+  .profile {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .logged-in-user {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .user-actions {
+    width: auto;
+    gap: var(--spacing-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-bar ul li a span:not(.cart-count) {
+    display: none;
+  }
+  
+  .nav-bar ul li a {
+    padding: var(--spacing-xs);
+  }
+  
+  .nav-bar ul li a::before {
+    margin-right: 0;
+  }
+  
+  .login-btn p {
+    display: none;
+  }
+  
+  .profile-logo .name {
+    display: none;
+  }
+  
+  .user-details .name {
+    display: none;
+  }
+}
+
+/* 8. Animações */
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+header {
+  animation: slideDown 0.3s ease-out;
+}
+
+/* 9. Tema Claro */
+.light-theme header {
+  background-color: rgba(245, 245, 245, 0.95);
+  border-bottom-color: var(--border-light);
+}
+
+.light-theme .desk-info {
+  background-color: var(--color-primary-100);
+  color: var(--color-primary-700);
+}
+
+.light-theme .btn-logout:hover {
+  background-color: rgba(239, 68, 68, 0.05);
+}
+
+.light-theme .profile-logo:hover {
+  background-color: var(--color-neutral-100);
+}
+
+.light-theme .btn-login {
+  background-color: var(--color-primary-50);
+  border-color: var(--color-primary-200);
+  color: var(--color-primary-600);
+}
+
+.light-theme .btn-login:hover {
+  background-color: var(--color-primary-100);
+  border-color: var(--color-primary-300);
+}

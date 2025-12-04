@@ -1,0 +1,83 @@
+/* Theme Toggle Styles */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--color-primary-600);
+  color: var(--btn-primary-text);
+  border: none;
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-normal) var(--transition-timing);
+  box-shadow: var(--shadow-sm);
+}
+
+.theme-toggle-btn:hover {
+  background-color: var(--color-primary-500);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.theme-toggle-btn:active {
+  transform: translateY(0);
+}
+
+.theme-icon {
+  font-size: var(--text-lg);
+  display: flex;
+  align-items: center;
+}
+
+.theme-text {
+  white-space: nowrap;
+}
+
+/* Light theme adjustments */
+.light-theme .theme-toggle-btn {
+  background-color: var(--color-primary-500);
+  color: white;
+}
+
+.light-theme .theme-toggle-btn:hover {
+  background-color: var(--color-primary-600);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .theme-toggle-btn {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--text-xs);
+  }
+  
+  .theme-icon {
+    font-size: var(--text-base);
+  }
+  
+  .theme-text {
+    display: none; /* Hide text on mobile for smaller button */
+  }
+}
+
+@media (max-width: 480px) {
+  .theme-toggle-btn {
+    padding: var(--spacing-xs);
+    min-width: 40px;
+    min-height: 40px;
+  }
+  
+  .theme-icon {
+    font-size: var(--text-lg);
+    margin: 0;
+  }
+}
