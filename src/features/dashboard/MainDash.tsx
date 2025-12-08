@@ -1,5 +1,5 @@
-import './dashboard.css';
-import { Link } from 'react-router-dom';
+import "./dashboard.css";
+import { Link } from "react-router-dom";
 import {
   Users,
   ShoppingCart,
@@ -10,22 +10,24 @@ import {
   DollarSign,
   TrendingUp,
 } from "lucide-react";
-import { useEffect, useState } from 'react';
-import { getAllOrders } from '../../services/order.service';
-import type { Order } from '../../types/order';
+import { useEffect, useState } from "react";
+import { getAllOrders } from "../../services/order.service";
+import type { Order } from "../../types/order";
 
 const MainDash = () => {
   const [orders, setOrders] = useState<Order[]>([]);
 
   useEffect(() => {
-    async () => {
+    const fetchData = async () => {
       try {
         const ordersData = await getAllOrders();
         setOrders(ordersData);
+        console.log(ordersData);
       } catch (err) {
         setOrders([]);
       }
-    } 
+    };
+    fetchData();
   }, []);
 
   const stats = [
@@ -204,11 +206,7 @@ const MainDash = () => {
 
                 <div className="module-link">
                   <span>Acessar módulo</span>
-                  <svg
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
+                  <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -251,7 +249,9 @@ const MainDash = () => {
                       <div className="table-cell-id">{order.id}</div>
                     </td>
                     <td>
-                      <div className="table-cell-customer">{order.customer}</div>
+                      <div className="table-cell-customer">
+                        {order.customer}
+                      </div>
                     </td>
                     <td>
                       <div className="table-cell-amount">{order.amount}</div>
@@ -295,7 +295,9 @@ const MainDash = () => {
           {/* Placeholder para gráfico */}
           <div className="chart-placeholder">
             <BarChart3 size={48} className="chart-placeholder-icon" />
-            <p className="chart-placeholder-text">Gráfico de vendas será exibido aqui</p>
+            <p className="chart-placeholder-text">
+              Gráfico de vendas será exibido aqui
+            </p>
             <p className="chart-placeholder-subtext">
               Integração com biblioteca de gráficos
             </p>
@@ -319,6 +321,6 @@ const MainDash = () => {
       </div>
     </div>
   );
-}
+};
 
 export default MainDash;

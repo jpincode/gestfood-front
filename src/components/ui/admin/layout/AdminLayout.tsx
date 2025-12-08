@@ -8,14 +8,12 @@ interface AdminLayoutProps {
   children: React.ReactNode;
   title?: string;
   subtitle?: string;
-  ordersLenght: number
 }
 
 const AdminLayout: React.FC<AdminLayoutProps> = ({ 
   children, 
   title, 
   subtitle,
-  ordersLenght
 }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -27,8 +25,7 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({
     <div className="dashboard-container">
       <Sidebar 
         isOpen={sidebarOpen} 
-        onClose={() => setSidebarOpen(false)} 
-        ordersLenght={ordersLenght}
+        onClose={() => setSidebarOpen(false)}
       />
       
       <main className="dashboard-main">

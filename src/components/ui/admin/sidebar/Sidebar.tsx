@@ -1,5 +1,5 @@
 // components/layout/Sidebar.tsx
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import {
   Users,
@@ -13,14 +13,30 @@ import {
   Home,
   Calendar,
 } from "lucide-react";
+import { getAllOrders } from "../../../../services/order.service";
+import type { Order } from "../../../../types/order";
 
 interface SidebarProps {
   isOpen?: boolean;
   onClose?: () => void;
-  ordersLenght: number;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ isOpen = true, onClose, ordersLenght }) => {
+const Sidebar: React.FC<SidebarProps> = ({ isOpen = true, onClose }) => {
+  const [orders, setOrders] = useState<Order[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const ordersData = await getAllOrders();
+        setOrders(ordersData);
+        console.log(ordersData);
+      } catch (err) {
+        setOrders([]);
+      }
+    }
+    fetchData();
+  }, []);
+      
   return (
     <aside className={`dashboard-sidebar ${isOpen ? 'open' : ''}`}>
       <div className="sidebar-wrapper">
@@ -55,7 +71,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen = true, onClose, ordersLenght 
             >
               <ShoppingCart size={20} className="nav-icon" />
               <span className="nav-text">Pedidos</span>
-              <span className="nav-badge">{ordersLenght === 0 ? 0 : ordersLenght}</span>
+              <span className="nav-badge">{orders.length}</span>
             </NavLink>
 
             <NavLink 
